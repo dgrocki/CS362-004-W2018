@@ -1,0 +1,18 @@
+gcc -o u1 -g unittest1.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o u2 -g unittest2.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o u3 -g unittest3.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o u4 -g unittest4.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o c1 -g cardtest1.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o c2 -g cardtest2.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o c3 -g cardtest3.c dominion.o rngs.o -Wall -fpic -coverage -lm
+gcc -o c4 -g cardtest4.c dominion.o rngs.o -Wall -fpic -coverage -lm
+./u1 &> unittestresults.out
+./u2 >> unittestresults.out
+./u3 >> unittestresults.out
+./u4 >> unittestresults.out
+./c1 >> unittestresults.out
+./c2 >> unittestresults.out
+./c3 >> unittestresults.out
+./c4 >> unittestresults.out
+gcov dominion.c >> unittestresults.out
+cat dominion.c.gcov >> unittestresults.out

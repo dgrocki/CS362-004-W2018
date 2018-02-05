@@ -198,6 +198,8 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
   return 0;
 }
 
+
+
 int shuffle(int player, struct gameState *state) {
  
 
@@ -228,6 +230,8 @@ int shuffle(int player, struct gameState *state) {
   return 0;
 }
 
+
+//unit test this 2
 int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state) 
 {	
   int card;
@@ -387,6 +391,10 @@ int endTurn(struct gameState *state) {
   return 0;
 }
 
+
+
+
+//unit test this 3
 int isGameOver(struct gameState *state) {
   int i;
   int j;
@@ -411,7 +419,7 @@ int isGameOver(struct gameState *state) {
       return 1;
     }
 
-  return 0;
+return 0;
 }
 
 int scoreFor (int player, struct gameState *state) {
@@ -428,7 +436,6 @@ int scoreFor (int player, struct gameState *state) {
       if (state->hand[player][i] == great_hall) { score = score + 1; };
       if (state->hand[player][i] == gardens) { score = score + ( fullDeckCount(player, 0, state) / 10 ); };
     }
-
   //score from discard
   for (i = 0; i < state->discardCount[player]; i++)
     {
@@ -1316,6 +1323,9 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
   return 0;
 }
 
+
+
+//unit test this 4
 int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
 {
   //Note: supplyPos is enum of choosen card
@@ -1332,8 +1342,9 @@ int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
   // toFlag = 2 : add to hand
 
   if (toFlag == 1)
-    {
-      state->deck[ player ][ state->deckCount[player] ] = supplyPos;
+    
+  {
+  	  state->deck[ player ][ state->deckCount[player] ] = supplyPos;
       state->deckCount[player]++;
     }
   else if (toFlag == 2)
@@ -1352,6 +1363,8 @@ int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
 	 
   return 0;
 }
+
+
 
 int updateCoins(int player, struct gameState *state, int bonus)
 {
