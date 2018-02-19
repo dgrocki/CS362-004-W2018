@@ -1,3 +1,15 @@
+Smithy added 3 cards  13 out of 1971 times
+Smithy removed 3 cards from the deck/discard 13 out of 1971 times
+Smithy drew nothing with 0 cards in deck/discard 29 out of 29 times
+Smithy ran successsfully 2000 out of 2000 times
+Smithy properly discarded 2000 out of 2000 times
+File 'dominion.c'
+Lines executed:25.99% of 558
+Branches executed:24.70% of 417
+Taken at least once:18.71% of 417
+Calls executed:14.74% of 95
+Creating 'dominion.c.gcov'
+
         -:    0:Source:dominion.c
         -:    0:Graph:dominion.gcno
         -:    0:Data:dominion.gcda
