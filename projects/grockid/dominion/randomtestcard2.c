@@ -7,6 +7,7 @@
 #include <assert.h>
 #include "rngs.h"
 #include<time.h>
+#include <sys/time.h>
 
 int acheck(score, actual){
 	if(actual == score){
@@ -142,7 +143,6 @@ void testVillage() {
 		success = cardEffect(village, 0,0,0, &g,v_pos,&bonus);
 
 
-		//	2 less treasures in deck		
 		if(acheck(g.handCount[p], hand_size))	//+0 since village should be removed and 1 added
 			check1++;
 
@@ -191,7 +191,23 @@ void testVillage() {
 int main(int argc, char *argv[])
 {
 	testVillage();
-	return 0;
+/*
+typedef struct timeval time;
+time stop, start;
+gettimeofday(&start, NULL);
+
+	testVillage();
+
+gettimeofday(&stop, NULL);
+if(stop.tv_sec > start.tv_sec)
+
+printf("seconds %d\n", stop.tv_sec-start.tv_sec);
+
+else
+
+printf("micrs %d\n", stop.tv_usec-start.tv_usec);
+*/
+return 0;
 }
 
 

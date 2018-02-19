@@ -80,7 +80,7 @@ void testAdventurer() {
 		struct gameState g;
 		players = rand()%3+2;
 		p = rand()%players;
-		g.playedCardCount = 0;
+		g.playedCardCount = 1;
 		for(i = 0; i < 10 ; i++){
 			cards[i] = master[rand()%27];
 		}
@@ -96,7 +96,7 @@ void testAdventurer() {
 
 		handtreasurecount = 0;
 		decktc = 0;
-		hand_size = rand()%100;	
+		hand_size = rand()%100+1;	
 		maxdeck_size = rand()%100;
 
 		if(maxdeck_size == 0){
@@ -136,6 +136,7 @@ void testAdventurer() {
 
 		for(i = 0; i < deck_size; i ++){
 			g.deck[p][i] =  cards[rand()%10];
+		//	g.deck[p][i] = copper;
 			if(g.deck[p][i] == copper || g.deck[p][i] == silver || g.deck[p][i] == gold){
 				decktc++;
 			}
@@ -143,11 +144,21 @@ void testAdventurer() {
 
 		for(i = 0; i < discard_size; i ++){
 			g.discard[p][i] = cards[rand()%10];
+		//	g.discard[p][i] = copper;
 			if(g.discard[p][i] == copper || g.discard[p][i] == silver || g.discard[p][i] == gold){
+				decktc++;
+			}
+			if(i == discard_size-1 && decktc == 0){
+				g.discard[p][i] = copper;
 				decktc++;
 			}
 		}
 
+
+	//	g.deck[p][0] = copper;
+		//g.discard[p][0] = copper;
+
+	//	decktc++;
 
 		//test if stops after finding 2 treasures
 		//test if shuffles discard if decke empty
@@ -160,10 +171,18 @@ void testAdventurer() {
 		if(decktc==1){
 			onet++;
 		}
-		
+	
+//		g.handCount[p] = 1;
+//		g.deckCount[p] = 3; 
+//		g.discardCount[p] = 1;
+//		g.hand[p][0] = adventurer;
+//		g.deck[p][0] = smithy;
+//		g.discard[p][0] = gold;
+//		g.deck[p][1] = village;
+//		g.deck[p][2] = smithy;
 
-
-		success = cardEffect(adventurer, 0,0,0, &g,adv_pos,&bonus);
+		//printf("wehre si the issue\n");
+		success = cardEffect(adventurer, 0,0,0, &g,0,&bonus);
 		
 
 		for(i = 0; i < g.handCount[p]; i ++){
@@ -184,8 +203,6 @@ void testAdventurer() {
 			}
 		}
 
-
-
 		//	2 less treasures in deck		
 		if(acheck(dtcn, decktc-2))
 			check1++;
@@ -194,7 +211,7 @@ void testAdventurer() {
 			check2++;
 		
 
-		//check for times with no treasures
+		//check for times with 1 treasures
 		if(acheck(htcn, handtreasurecount+1))
 			check5++;
 
@@ -203,18 +220,18 @@ void testAdventurer() {
 			check6++;
 		
 		}	
-		//check times with only 1 treasure
+		//check times with only no treasure
 		
 		//	printf("\n\nTesting Cards in Deck If Adventurer Ran Successfully\n");
 		if(acheck(success, 0))
 			check3++;
 
 
-//		if(acheck(1 , g.playedCardCount))
-//			check4++;
+		if(acheck(1 , g.playedCardCount))
+			check4++;
 		//	printf("\n\nTesting If Adventurer Found 2 treasures\n");
-		if(acheck(g.handCount[p], hand_size + 1))
-			check4++;	//add 2 treasures to hand and then discard adventure card
+//		if(acheck(g.handCount[p], hand_size + 1))
+//			check4++;	//add 2 treasures to hand and then discard adventure card
 
 
 
