@@ -1,0 +1,32 @@
+D/smithy01
+The bug is that smithy does not draw the correct number of cards. Playing the card causes this bug as the correct number of cards are not added to the hand. Any call to this function produces this error given that there are at least 3 cards in the deck. This happens during this function call, 
+	success = cardEffect(smithy, 0,0,0, &g,1,&bonus);
+Where we tell it that smithy is the card and we pass it the gamestate that has been set up. This cuases the bug. 
+
+This bug was detected on version 2 of the software (assignment 2)
+
+The estimated severity for this bug is medium. The game can still be played, however the bug prevents this card from working properly. Simply not having the card in the piles would solve this temporarily, however it should be fixed soon.
+
+The estimated priority is medium-high. Seeing that Smithy and big money is a common strategy,  many people will not enjoy playing the game when their favorite strategy is broken. It should be fixed soon in order to prevent the players from getting upset with the game. 
+
+
+
+D/village01
+The bug is that village does not add the proper number of actions. Playing the card causes this bug. It happens whenever the function for this card is called. This is the function call that causes the error where the game has been set up to contain random cards.
+	success = cardEffect(village, 0,0,0, &g,0,&bonus);
+  
+This bug was detected on version 2 of the software (assignment 2)
+
+The estimated severity for this bug is medium. The game can still be played, however the bug prevents this card from working properly. Simply not having the card in the piles would solve this temporarily, however it should be fixed soon.
+
+The estimated priority is medium-high. Seeing that Village is a card that is involved with many game winning strategies. Many people will not enjoy playing the game when their favorite strategy is broken. It should be fixed soon in order to prevent the players from getting upset with the game. 
+
+
+
+Answers to other Questions for Bug-Reports:
+I did not find any bugs that were too interesting. Most of the bugs encountered were because of rather simple mistakes, like not adding the right number or looping one too many times. The most complicated bug that I encountered was due to my unit test on the score for function. This was interesting because part of the test passed and part of it didn’t. It appears that there are multiple bugs in this function due to the results of my unit tests. All the different attempts at calculating the score fail, once we add the garden card. In addition to this however, when we try the tests on the deck, it fails for all of the cards and it says the score is 0. This is certainly the most interesting bug since it is complicated and is failing for many reasons. 
+
+The bug in Smithy is that it draws 4 cards instead of 3. This was caught by my tests which look to see if 3 new cards were added and smithy was removed. The cause of this is simply and inequality being <= instead of <. My tests showed that it was failing so I was able to easily locate the code for this card and analyze why the number in the hand was off.
+The bug in Village is that it only adds 1 action instead of 2 actions. This was very clear in both the random and the unittests as a bug. In the random test, everything had a 100% success except for actions, which had 0%. This made it very clear that something was wrong with the number of actions that were being added. The unit test also showed that the number of actions was failing. The reason for this bug in the code is that it is doing a ++ instead of a +=2. 
+The bug in the score for function is caused for several reasons. Part of it is caused because gardens is not counting all of the cards in the deck and hand properly. Also, the loop for the deck uses the wrong variable to loop on and loops the wrong number of times. If we have nothing in our discard pile, it will not loop.
+
